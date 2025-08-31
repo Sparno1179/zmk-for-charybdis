@@ -1,9 +1,9 @@
+#include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
-#include <dt-bindings/zmk/mouse.h>
 
 &lt {
     tapping-term-ms = <200>;
@@ -40,10 +40,13 @@
         alt_tilde: alt_tilde {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &kp LALT>
-            , <&macro_tap &kp TILDE>
-            , <&macro_release &kp LALT>
-            ;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp TILDE>,
+                <&macro_release>,
+                <&kp LALT>;
 
             label = "ALT_TILDE";
         };
@@ -54,10 +57,10 @@
 
         layer_0 {
             bindings = <
-&kp ESC         &kp Q  &kp W  &kp E      &kp R           &kp T             &kp Y          &kp U        &kp I      &kp O    &kp P          &kp MINUS
-&kp TAB         &kp A  &kp S  &kp D      &kp F           &kp G             &kp H          &kp J        &kp K      &kp L    &kp SEMICOLON  &kp SINGLE_QUOTE
-&kp LEFT_SHIFT  &kp Z  &kp X  &kp C      &kp V           &kp B             &kp N          &kp M        &kp COMMA  &kp DOT  &kp SLASH      &kp BACKSLASH
-                              &kp LCTRL  &lt 1 LEFT_WIN  &alt_tilde        &kp BACKSPACE  &lt 2 ENTER
+&kp ESC         &kp Q  &kp W  &kp E      &kp R           &kp T         &kp Y          &kp U        &kp I      &kp O    &kp P          &kp MINUS
+&kp TAB         &kp A  &kp S  &kp D      &kp F           &kp G         &kp H          &kp J        &kp K      &kp L    &kp SEMICOLON  &kp SINGLE_QUOTE
+&kp LEFT_SHIFT  &kp Z  &kp X  &kp C      &kp V           &kp B         &kp N          &kp M        &kp COMMA  &kp DOT  &kp SLASH      &kp BACKSLASH
+                              &kp LCTRL  &lt 1 LEFT_WIN  &alt_tilde    &kp BACKSPACE  &lt 2 ENTER
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -65,28 +68,28 @@
 
         layer_1 {
             bindings = <
-&trans  &kp F1   &kp F2  &kp F3  &kp F4  &kp F5      &kp F6      &kp F7    &kp F8        &kp F9     &kp F10    &kp F11
-&trans  &trans   &trans  &trans  &trans  &trans      &trans      &mkp MB1  &kp UP_ARROW  &mkp MB2   &mo 3      &kp F12
-&trans  &trans   &trans  &trans  &trans  &trans      &trans      &kp LEFT  &kp DOWN      &kp RIGHT  &mkp MCLK  &trans
-                         &trans  &trans  &trans      &kp DELETE  &trans
+&trans  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5    &kp F6      &kp F7    &kp F8        &kp F9     &kp F10    &kp F11
+&trans  &trans  &trans  &trans  &trans  &trans    &trans      &mkp MB1  &kp UP_ARROW  &mkp MB2   &mo 3      &kp F12
+&trans  &trans  &trans  &trans  &trans  &trans    &trans      &kp LEFT  &kp DOWN      &kp RIGHT  &mkp MCLK  &trans
+                        &trans  &trans  &trans    &kp DELETE  &trans
             >;
         };
 
         layer_2 {
             bindings = <
-&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp NUMBER_5      &kp NUMBER_6  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp NUMBER_0  &kp EQUAL
-&trans  &trans        &trans        &trans        &trans        &trans            &trans        &trans  &trans  &trans  &trans  &trans
-&trans  &trans        &trans        &trans        &trans        &trans            &trans        &trans  &trans  &trans  &trans  &trans
-                                    &trans        &trans        &none             &none         &none
+&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4       &kp NUMBER_5    &kp NUMBER_6  &kp NUMBER_7          &kp NUMBER_8           &kp NUMBER_9  &kp NUMBER_0  &kp EQUAL
+&trans  &trans        &trans        &trans        &kp DOUBLE_QUOTES  &kp SQT         &trans        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans        &trans        &trans
+&trans  &trans        &trans        &trans        &trans             &trans          &trans        &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &trans        &trans        &trans
+                                    &trans        &trans             &trans          &trans        &trans
             >;
         };
 
         layer_3 {
             bindings = <
 &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans          &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans          &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans
+&trans      &trans        &trans        &trans        &trans        &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans        &trans        &trans        &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                                        &trans        &trans        &trans    &trans  &trans
             >;
         };
 
