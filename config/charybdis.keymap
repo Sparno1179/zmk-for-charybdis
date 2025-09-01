@@ -41,40 +41,57 @@
             compatible = "zmk,behavior-macro";
             label = "ALT_TILDE";
             #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LALT>   // 1. 左Altキーを押し続ける
-                , <&macro_tap &kp GRAVE>    // 2. ` (Grave/バッククォート) キーをタップする
-                , <&macro_release &kp LALT> // 3. 左Altキーを離す
-                ;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp GRAVE>,
+                <&macro_release>,
+                <&kp LALT>;
         };
+
         // 仮想デスクトップを左に切り替えるマクロ
+
         desk_l: desk_l_macro {
             compatible = "zmk,behavior-macro";
             label = "DESK_L";
             #binding-cells = <0>;
-            bindings
-                // 修飾キーを押し続ける
-                = <&macro_press &kp LCTRL &kp LGUI>
-                // 矢印キーをタップ
-                , <&macro_tap &kp LEFT>
-                // 修飾キーを離す
-                , <&macro_release &kp LCTRL &kp LGUI>
-                ;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL &kp LGUI>,
+                <&macro_tap>,
+                <&kp LEFT>,
+                <&macro_release>,
+                <&kp LCTRL &kp LGUI>;
         };
 
         // 仮想デスクトップを右に切り替えるマクロ
+
         desk_r: desk_r_macro {
             compatible = "zmk,behavior-macro";
             label = "DESK_R";
             #binding-cells = <0>;
-            bindings
-                // 修飾キーを押し続ける
-                = <&macro_press &kp LCTRL &kp LGUI>
-                // 矢印キーをタップ
-                , <&macro_tap &kp RIGHT>
-                // 修飾キーを離す
-                , <&macro_release &kp LCTRL &kp LGUI>
-                ;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL &kp LGUI>,
+                <&macro_tap>,
+                <&kp RIGHT>,
+                <&macro_release>,
+                <&kp LCTRL &kp LGUI>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        lwin {
+            bindings = <&kp LGUI>;
+            key-positions = <26 27>;
+        };
+
+        lalt {
+            bindings = <&kp LALT>;
+            key-positions = <27 28>;
         };
     };
 
@@ -94,10 +111,10 @@
 
         layer_1 {
             bindings = <
-&trans  &kp F1   &kp F2  &kp F3  &kp F4  &kp F5      &kp F6      &kp F7    &kp F8        &kp F9     &kp F10    &kp F11
-&trans  &trans   &trans  &trans  &trans  &desk_l     &trans      &mkp MB1  &kp UP_ARROW  &mkp MB2   &mo 3      &kp F12
-&trans  &trans   &trans  &trans  &trans  &desk_r     &trans      &kp LEFT  &kp DOWN      &kp RIGHT  &mkp MCLK  &trans
-                         &trans  &trans  &trans      &kp DELETE  &trans
+&trans  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5     &kp F6      &kp F7    &kp F8        &kp F9     &kp F10    &kp F11
+&trans  &trans  &trans  &trans  &trans  &desk_l    &trans      &mkp MB1  &kp UP_ARROW  &mkp MB2   &mo 3      &kp F12
+&trans  &trans  &trans  &trans  &trans  &desk_r    &trans      &kp LEFT  &kp DOWN      &kp RIGHT  &mkp MCLK  &trans
+                        &trans  &trans  &trans     &kp DELETE  &trans
             >;
         };
 
